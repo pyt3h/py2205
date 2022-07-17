@@ -1,27 +1,48 @@
 <meta charset="UTF-8">
 <style>
-    #leftPanel,#centerPanel,#rightPanel{
-        border: 1px solid black;
-        min-height: 50px;
-        min-width: 200px;
-    }
     #container{
         display: flex;
         max-width: 1280px;
         margin-left: auto;
         margin-right: auto;
+        padding-top: 20px;
+        border-top: 2px solid #DDD;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #DDD;
     }
     #leftPanel{
         width: 20%;
+        padding-right: 20px;
+        border-right: 1px solid #DDD;
     }
     #centerPanel{
         width: 50%;
+        padding-left: 20px;
+        padding-right: 20px;
     }
     #rightPanel{
+        border-left: 1px solid #DDD;
         width: 30%;
+        padding-left: 20px;
+    }
+    .center-img{
+        width: 100%;
     }
     .right-item{
         display: flex;
+    }
+    body{
+        font-size: 1.25rem;
+    }
+    .left-img-title,.right-item-title{
+        font-weight: bold;
+    }
+    .center-img-summary{
+        font-size: 1.1rem;
+        color: rgb(120,120,120);
+    }
+    .center-img-title{
+        font-size: 2.0rem;
     }
 </style>
 <div id="container">
