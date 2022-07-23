@@ -1,0 +1,170 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .container{
+        display:flex;
+        border: 1px solid rgb(214, 212, 212);
+        border-style: dashed;
+        padding: 50px;
+        margin: 130px;
+    }
+    .left{
+        width: 30%;
+        border-right: 1px solid rgb(214, 212, 212);
+        padding-right: 20px;
+        border-right-style: dashed;
+    }
+    .right{
+        width: 70%;
+        margin-top: 10px;
+        margin-bottom:5px;
+        margin-left: 20px;     
+    }
+    .fullname,.jd{
+        text-align: center;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+    .fullname{
+        color: rgb(17, 17, 17);
+        font-size: 45;
+        font-weight: 900;
+    }
+    
+    .jd{
+        font-weight: 545;
+        color: rgb(65, 62, 62);
+        font-size: 29;
+    }
+    .content{
+        font-size: 24;
+        color: rgb(30, 30, 30);
+        text-shadow: 1px;
+        width: max-contents;
+    }
+    .title,.content,.header{
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .title{
+        font-weight: bold;
+        font-size: 24; 
+    }
+    .header{ 
+        font-weight: 600;
+        color: rgb(22, 22, 22);
+        font-size: 26;
+    }
+
+
+</style>
+
+<div class="container">
+    <div class="left">
+        <h2 class = header>LIÊN HỆ</h2>
+        <hr/>
+        <table style="width:100%">
+            <thead><tr><th></th></tr></thead>
+            <tbody ><tr><td class ="fa fa-github" style="font-size:24;padding-bottom:10px;">01/01/2000</td></tr></tbody>
+            <tbody ><tr><td class ="fa fa-github" style="font-size:24;padding-bottom:10px;">abcxyz@gmail.com</td></tr></tbody>
+            <tbody ><tr><td class ="fa fa-github" style="font-size:24;padding-bottom:10px;">123, Hà Đông</td></tr></tbody>
+            <tbody ><tr><td class ="fa fa-github" style="font-size:24;padding-bottom:10px;">0123456789</td></tr></tbody>
+        </table>
+        <h2 class = header>KĨ NĂNG</h2>
+        <hr/>
+        <p class ="content">Kĩ năng cứng/Kĩ năng mềm</p>
+        <h2 class = header>CHỨNG CHỈ</h2>
+        <hr/>
+        <p ><b class="content">Chứng chỉ</b><span class="content">(ngày cấp)</span></p>
+        <p class ="content">Chi tiết chứng chỉ</p>
+        <h2 class = header>GIẢI THƯỞNG</h2>
+        <hr/>
+        <h3 class = header>TÊN GIẢI THƯỞNG</h3>
+        <p class ="content"><b>Loại giải</b></p>
+        <p class ="content">Ngày cấp</p>
+        <p class ="content">Cấp bởi tổ chức</p>
+        <h2 class = header>ĐIỀU QUAN TÂM</h2>
+        <hr/>
+        <p class ="content">Điều quan tâm</p>
+    </div>
+    <div class="right">
+        <h1 class="fullname">NGUYỄN VĂN A</h1>
+        <div class="jd">VỊ TRÍ ỨNG TUYỂN</div>
+        <h2 class = header>GIỚI THIỆU</h2>
+        <hr/>
+        <p class ="content">Hãy viết một đoạn giới thiệu ngắn để nêu bật thành tích, kỹ
+            năng của bạn
+        </p>
+        <h2 class = header>KINH NGHIỆM LÀM VIỆC</h2>
+        <hr/>
+        <table style="width:100%;border:1px dash black;font-size:24;">
+            <thead>
+              <tr>
+                <th style="text-align:start;padding-bottom:10px">Tên công ty - Chức vụ</th>
+                <th style="text-align:end;font-weight: lighter;">Bắt đầu - Kết thúc</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr>
+                <td>Chi tiết công việc : nhiệm vụ , thành tựu...</td>
+              </tr>
+            </tbody>
+        </table>
+        <h2 class = header>HỌC VẤN</h2>
+        <hr/>
+        <table style="width:100%;border:1px dash black;font-size:24;">
+            <thead>
+              <tr>
+                <th style="text-align:start;padding-bottom:10px">Tên trường-Chuyên ngành</th>
+                <th style="text-align:end;font-weight: lighter;">Bắt đầu - Kết thúc</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr>
+                <td>Chi tiết học tập, điểm trung bình,thành tựu....</td>
+              </tr>
+            </tbody>
+        </table>
+        <h2 class = header>NGƯỜI THAM CHIẾU</h2>
+        <hr/>
+        <p class ="content">Chức vụ - Công ty</p>
+        <p class ="content">Điện thoại:0969696969 &nbsp;&nbsp; Email:aloaloalo@gmail.com</p>
+        <h2 class = header>HOẠT ĐỘNG</h2>
+        <hr/>
+        <table style="width:100%;border:1px dash black;font-size:24;">
+            <thead>
+              <tr>
+                <th style="text-align:start;padding-bottom:10px">Tên tổ chức , vai trò</th>
+                <th style="text-align:end;font-weight: lighter;">Bắt đầu - Kết thúc</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr>
+                <td>Điểm nổi bật khi hoạt động tổ chức</td>
+              </tr>
+            </tbody>
+        </table>
+        <h2 class = header>NGÔN NGỮ</h2>
+        <hr/>
+        <div class="title">Ngôn ngữ</div>
+        <p class ="content">Chi tiết khả năng ngôn ngữ</p>
+        <h2 class = header>DỰ ÁN</h2>
+        <hr/>
+        <table style="width:100%;border:1px dash black;font-size:24;">
+            <thead>
+              <tr>
+                <th style="text-align:start;padding-bottom:10px">Tên dự án</th>
+                <th style="text-align:end;font-weight: lighter;">Bắt đầu - Kết thúc</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr>
+                <td>Chi tiết dự án</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
