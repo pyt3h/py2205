@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<div>
+    <label>Your name:</label>
+    <input id="name" />
+    <button onclick="btnClick()">OK</button>
+    <div id="message"></div>
+</div>
+<script>
+  function btnClick(){
+    let nameInput = document.getElementById('name');
+    let name = nameInput.value;
+    //alert('Hello ' + name);
+    let messageDiv = document.getElementById('message');
+    messageDiv.innerHTML = 'Hello ' + name;
+  }
+</script>
