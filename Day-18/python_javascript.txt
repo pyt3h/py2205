@@ -1,0 +1,22 @@
+Python					JS
+; không cần				; nên dùng
+x = 1					let x =1
+f'{a}+{b}={a+b}'		`${a}+${b}=${a+b}`
+khối lệnh dùng indent	khối lệnh dùng {}
+if x==1					if(x==1)
+elif					else if
+and or not				&& || !
+True/False				true/false
+if expression 			ternary (?)
+for i in range(n)		for(let i=0;i<n;i++)
+st[start:end]			st.substring(start,end)
+lst[start:end]			lst.slice(start,end)
+"-".join(["a","b"])		["a","b"].join("-")
+x in lst				lst.includes(x)
+lst.index(x)			lst.indexOf(x)
+len([1,2,3])			[1,2,3].length
+data={"a": 1,"b": 2}	data={a:1, 'b': 1}
+data['a'],data["b"]		data.a, data['b']
+def add(a,b):			function add(a,b) {
+	return a+b				return a+b;
+						}
