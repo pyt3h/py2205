@@ -1,3 +1,24 @@
+
 <script>
+    //github.com/pyt3h/py2205 --> Day19
     const url = 'https://api.openweathermap.org/data/2.5/weather?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9';
+    
+    async function getData(){
+        let resp = await fetch(url);
+        let data = await resp.json();
+        console.log(data);
+        let temp = data.main.temp;
+        let tempEl = document.getElementById('temp');
+        tempEl.innerHTML = `Temp: ${temp} C`;
+
+        let humidity = data.main.humidity;
+        let humidityEl = document.getElementById('humidity');
+        humidityEl.innerHTML = `Humidity: ${humidity} %`;
+    }
+    getData();          
 </script>
+<div>
+    <div id="temp"></div>
+    <div id="humidity"></div>
+</div>
+
