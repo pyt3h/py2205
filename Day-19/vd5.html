@@ -1,6 +1,22 @@
 <meta charset="UTF-8">
 <script>
     let existed_usernames = ['admin' ,'test', 'user'];
+    function register(){
+        let username = document.getElementById('username').value;
+        let password1 = document.getElementById('password1').value;
+        let password2 = document.getElementById('password2').value;
+        let error = 'No issue found.';
+        if(username == '') {
+            error = 'Username cannot be blank';
+        }else if(existed_usernames.includes(username)){
+            error = 'Username already exists'
+        }else if(password1.length < 6){
+            error = 'Password length needs to be at least 6';
+        }else if(password1 != password2){
+            error = 'Confirmation password does not match';
+        }
+        document.getElementById('message').innerHTML = error;
+    }
     //1. username is not blank
     //2. username must not exists
     //3. password2 length >= 6
@@ -8,8 +24,8 @@
 </script>
 <div>
     <div>Username: <input id="username"/></div>
-    <div>Password: <input id="password1"/></div>
-    <div>Confirm pass: <input id="password2"/></div>
+    <div>Password: <input id="password1" type="password"/></div>
+    <div>Confirm pass: <input id="password2" type="password"/></div>
     <button onclick="register()">Register</button>
     <span id="message"></span>
 </div>
