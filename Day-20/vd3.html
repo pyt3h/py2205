@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+<script>
+    let studentList = [
+        {name: 'Nguyen Van A', phone: '03213124'},
+        {name: 'Nguyen Van B', phone: '03213125'},
+        {name: 'Nguyen Van C', phone: '03213126'},
+    ];
+</script>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody id="student_list"></tbody>
+</table>
+<script>
+    function renderItem(student) {
+        return (
+            `<tr>
+                <td>${student.name}</td>
+                <td>${student.phone}</td>
+            </tr>`
+        );
+    }
+    let html = studentList.map(renderItem).join('');
+    document.getElementById('student_list').innerHTML = html;
+</script>
