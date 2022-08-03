@@ -1,3 +1,35 @@
+<meta charset="UTF-8">
 <script>
     let url ='http://api.openweathermap.org/data/2.5/forecast?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9&cnt=8';
+    let weatherList = [];
+    async function getData(){
+        let resp = await fetch(url);
+        let result = await resp.json();
+        weatherList = result.list;
+        console.log(weatherList);
+        let html = weatherList.map(renderItem).join('');
+        document.getElementById('weather_list').innerHTML = html;
+    }
+    function renderItem(weather){
+        return(
+            `
+                <tr>
+                    <td>${weather.dt_txt}</td>
+                    <td>${weather.main.temp} C</td>
+                    <td>${weather.main.humidity} %</td>
+                </tr>
+            `
+        )
+    }
+    getData();
 </script>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Temperature</th>
+            <th>Humidity</th>
+        </tr>
+    </thead>
+    <tbody id="weather_list"></tbody>
+</table>
