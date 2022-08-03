@@ -1,0 +1,24 @@
+<meta charset="UTF-8"> 
+<div id="app"></div>
+<script>
+    let login = false;
+    function render() {
+        let html = !login? `
+            <button onclick="logIn()">
+                Log in
+            </button>` : `
+            <button onclick="logOut()">
+                Log out
+            </button>`;
+        document.getElementById('app').innerHTML = html;
+    }
+    function logIn(){
+        login = true;
+        render();
+    }
+    function logOut(){
+        login = false;
+        render();
+    }
+    render();
+</script>
