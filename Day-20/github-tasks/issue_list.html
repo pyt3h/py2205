@@ -1,7 +1,20 @@
 <meta charset="UTF-8">
 <script>
     let url='https://api.github.com/repos/pyt3h/py2205/issues';
+    let issueList = [];
+    function renderItem(issue){
+        return `<li>${issue.title}</li>`;
+    }
+    async function getData() {
+        let resp = await fetch(url);
+        issueList = await resp.json();
+        console.log(issueList);
+        let html = issueList.map(renderItem).join('');
+        document.getElementById('issue_list').innerHTML = html;
+    }
+    getData();
 </script>
 <div id="app">
     <ul id="issue_list"></ul>
+    <a href="new_issue.html">New issue</a>
 </div>

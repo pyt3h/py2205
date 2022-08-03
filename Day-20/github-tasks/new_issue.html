@@ -1,5 +1,34 @@
 <meta charset="UTF-8">
 <script>
     let url='https://api.github.com/repos/pyt3h/py2205/issues';
-    const token = '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';
+    const token = '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';
+    async function createIssue(){
+        let title = document.getElementById('title').value;
+        let body = document.getElementById('body').value;
+        let data = {title, body};
+        data = JSON.stringify(data);
+        let headers = {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json'
+        };
+        let options = {method: 'POST', body: data, headers};
+        let resp = await fetch(url, options);
+        if(resp.status != 201){
+            alert('Failed to create');
+        }else{
+            location.href = 'issue_list.html';
+        }
+    }
 </script>
+<div>
+    <h4>New issue</h4>
+    <div>
+        <label>Title:</label>
+        <input id="title"/>
+    </div>
+    <div>
+        <label>Detail:</label>
+        <textarea id="body"></textarea>
+    </div>
+    <button onclick="createIssue()">Create</button>
+</div>
