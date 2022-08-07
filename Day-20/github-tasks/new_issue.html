@@ -2,7 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <script>
     let url='https://api.github.com/repos/pyt3h/py2205/issues';
-    const token = '***'; // get token from: http://103.124.94.100/token.txt
+    const token = '**'; // get token from: http://103.124.94.100/token.txt
     async function createIssue(){
         let title = document.getElementById('title').value;
         let body = document.getElementById('body').value;
@@ -21,15 +21,15 @@
         }
     }
 </script>
-<div>
+<div class="container p-3">
     <h4>New issue</h4>
-    <div>
-        <label>Title:</label>
-        <input id="title"/>
+    <div class="form-group">
+        <label class="form-label">Title:</label>
+        <input id="title" class="form-control"/>
     </div>
-    <div>
-        <label>Detail:</label>
-        <textarea id="body"></textarea>
+    <div class="form-group">
+        <label class="form-label">Detail:</label>
+        <textarea id="body" class="form-control"></textarea>
     </div>
-    <button onclick="createIssue()">Create</button>
+    <button class="btn btn-primary mt-3" onclick="createIssue()">Create</button>
 </div>
