@@ -1,4 +1,38 @@
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <script>
-    let url='https://api.github.com/repos/pyt3h/py2205/issues/1';
+    let url='https://api.github.com/repos/pyt3h/py2205/issues/55/comments';
+    let commentList = [];
+    function renderItem(comment) {
+        return (`
+            <li>${comment.body}</li>
+        `)
+    }
+    async function getData(){
+        let resp = await fetch(url);
+        commentList = await resp.json();
+        console.log(commentList);
+        let html = commentList.map(renderItem).join('');
+        document.getElementById('comment_list').innerHTML = html;
+    }    
+    function createComment() {
+        // TODO
+    }
+    getData();
 </script>
+<ul id="comment_list"></ul>
+<div class="container p-3">
+    <div class="card my-2">
+        <div class="card-header">
+            <b>pyt3h</b> commented 2 hours ago
+        </div>
+        <div class="card-body">
+            Comment 4
+        </div>
+    </div>
+    <div class="form-group mt-4">
+        <label class="form-label">New comment:</label>
+        <textarea id="body" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-primary mt-3" onclick="createComment()">Add</button>
+</div>
