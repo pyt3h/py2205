@@ -12,9 +12,13 @@ def search_customer(request):
     print('======keyword=', keyword)
     result = []
     with connection.cursor() as cursor:
-        cursor.execute(f'''
+        print(f'''
             SELECT id,name FROM customer WHERE name LIKE '%{keyword}%'
-            '''
+            ''')
+        cursor.execute(f'''
+            SELECT id,name FROM customer WHERE name LIKE %s
+            ''',
+            [f'%{keyword}%']
         )
         table = cursor.fetchall()
         for row in table:
@@ -23,6 +27,15 @@ def search_customer(request):
         
         log_sql(connection)
 
+    return to_json(result)
+
+def search_product(request):
+    params = request.GET
+    keyword = params.get('keyword', '')
+    price_min = params.get('price_min', 0)
+    price_max = params.get('price_max', 1e9)
+    print('=====',keyword, price_min, price_max)
+    result = [] #TODO
     return to_json(result)
 
 def to_json(data):
