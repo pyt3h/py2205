@@ -12,9 +12,6 @@ def search_customer(request):
     print('======keyword=', keyword)
     result = []
     with connection.cursor() as cursor:
-        print(f'''
-            SELECT id,name FROM customer WHERE name LIKE '%{keyword}%'
-            ''')
         cursor.execute(f'''
             SELECT id,name FROM customer WHERE name LIKE %s
             ''',
