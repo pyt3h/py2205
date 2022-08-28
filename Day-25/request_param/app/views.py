@@ -33,6 +33,24 @@ def search_product(request):
     price_max = params.get('price_max', 1e9)
     print('=====',keyword, price_min, price_max)
     result = [] #TODO
+    with connection.cursor() as cursor:
+        sql = '''
+            SELECT id,name,price,image_url FROM product
+            WHERE name LIKE %s
+            AND price >= %s AND price <= %s
+        '''
+        sql_params = ['%'+keyword+'%', price_min, price_max]
+        cursor.execute(sql, sql_params)
+        table = cursor.fetchall()
+        for row in table:
+            id,name,price,image_url = row
+            result.append({
+                'id': id,
+                'name': name,
+                'price': price,
+                'image_url':image_url,
+            })
+        log_sql(connection)
     return to_json(result)
 
 def to_json(data):
