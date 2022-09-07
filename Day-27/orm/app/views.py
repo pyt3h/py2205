@@ -46,3 +46,28 @@ def search_product(request):
             'name': product.name
         })
     return HttpResponse(json.dumps(result))
+
+#127.0.0.1:8000/get-customer-history/1
+def get_customer_history(request, cid):
+    result = []
+    order_list = Order.objects.all()
+    order_list = order_list.filter(customer__id=cid)
+    for order in order_list:
+        result.append({
+            'product_name': order.product.name,
+            'qty': order.qty,
+            'order_date': order.order_date.strftime('%d/%m/%Y')
+        })
+    return HttpResponse(json.dumps(result))
+
+#127.0.0.1:8000/get-product-history/1
+def get_product_history(request, pid):
+    result = []
+    order_list = Order.objects.filter(product__id=pid)
+    for order in order_list:
+        result.append({
+            'customer_name': order.customer.name,
+            'qty': order.qty,
+            'order_date': order.order_date.strftime('%d/%m/%Y')
+        })
+    return HttpResponse(json.dumps(result))
