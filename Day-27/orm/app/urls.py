@@ -2,6 +2,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-   path('', index),
+   path('search-customer', search_customer),
+   path('search-product', search_product),
+   #path('', index),
 ]
 
