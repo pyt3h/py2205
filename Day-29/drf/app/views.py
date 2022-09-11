@@ -39,7 +39,7 @@ def update_customer(request, id):
    customer.save()
    return Response({'success': True})
 
-@api_view(['DELETE'])# 127.0.0.1:8000/api/delete-customer
+@api_view(['DELETE'])# 127.0.0.1:8000/api/delete-customer/1
 def delete_customer(request, id):
    customer = Customer.objects.get(id=id)
    customer.delete()
