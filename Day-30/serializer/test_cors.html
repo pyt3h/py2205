@@ -1,0 +1,5 @@
+<script>
+    fetch('http://127.0.0.1:8000/api/hello')
+    .then(resp => resp.json())
+    .then(result => alert(result.message));
+</script>
