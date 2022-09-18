@@ -39,7 +39,7 @@ def purchase(request):
    for item in items:
       product = Product.objects.get(id=item.get('product_id'))
       Order.objects.create(
-         customer_id=data['customer_id'],
+         customer=Customer(id=data['customer_id']),
          product=product,
          qty=item.get('qty'),
          price_unit=product.price,
