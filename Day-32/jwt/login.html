@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<div>User name: <input id="username"></div>
+<div>Password: <input id="password" type="password"></div>
+<button onclick="login()">Log in</button>
+<script>
+  async function login(){
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    //alert(username+":"+password);
+    let data = new FormData();
+    data.append("username", username);
+    data.append("password", password);
+    const url ='http://127.0.0.1:8000/api/token';
+    let resp = await fetch(url, {method: 'POST', body:data});
+    let result = await resp.json();
+    if(result.access){
+      localStorage.setItem('token', result.access);
+      location.href = 'test_cors.html';
+    }else{
+      alert('Wrong username/password');
+    }
+  }
+</script>

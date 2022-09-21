@@ -1,0 +1,17 @@
+<div id="message"></div>
+<a href="javascript:logout()">Log out</a>
+<script>
+    function logout(){
+        localStorage.removeItem('token');
+        location.href = 'login.html';
+    }
+    const token = localStorage.getItem('token');
+    const headers = {
+        "Authorization": "Bearer " + token
+    };
+    fetch('http://127.0.0.1:8000/api/hello',{headers})
+    .then(resp => resp.json())
+    .then(result => 
+        document.getElementById('message').innerHTML = result.message
+    );
+</script>
