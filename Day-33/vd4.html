@@ -11,7 +11,6 @@
       this.url = 'https://api.openweathermap.org/data/2.5/weather?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9';
     }
     async componentWillMount(){
-      //this.setState({temp: 28});
       let resp = await fetch(this.url);
       let data = await resp.json();
       console.log(data);
