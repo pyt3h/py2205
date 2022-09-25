@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<div id="app"></div>
+
+<script type="text/babel">
+  function App() {
+    const [name, setName] = React.useState('world');
+    function click() {setName('world 2');}
+    return (
+      <div>
+        Hello {name}
+        <button onClick={click}>OK</button>
+      </div>
+    );
+  }
+  ReactDOM.render(<App/>, document.getElementById('app'));
+</script>
