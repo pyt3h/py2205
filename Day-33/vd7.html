@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script type="text/babel">
+  const userList = [
+    {id:1, name: 'Nguyen Van A', phone: '0324324'},
+    {id:2, name: 'Nguyen Van B', phone: '0324325'},
+  ];
+  function User(props){
+    const user = props.user;
+    return <li>{user.name} - {user.phone}</li>;
+  }
+  function App(){
+    return (
+      <ul>
+        {userList.map(u => <User key={u.id} user={u}/>)}
+      </ul>
+    );
+  }
+  ReactDOM.render(<App/>, document.getElementById('app'));
+</script>

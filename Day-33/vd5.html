@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script type="text/babel">
+  const url = 'https://api.openweathermap.org/data/2.5/weather?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9';
+  function App(){
+    const [temp, setTemp] = React.useState(''); 
+    const [humidity, setHumidity] = React.useState('');
+    async function init(){
+      //setTemp(28);
+      const resp = await fetch(url);
+      const data = await resp.json();
+      console.log(data);
+      setTemp(data.main.temp);
+      setHumidity(data.main.humidity);
+    }
+    React.useEffect(init, []);
+    return (
+      <>
+        <div>Nhiệt độ : {temp} độ C</div>
+      </>
+    )
+  }
+  ReactDOM.render(<App/>, document.getElementById('app'));
+</script>

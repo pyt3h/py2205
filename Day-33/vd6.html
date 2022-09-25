@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script type="text/babel">
+    function App(){
+      const [username, setUsername] = React.useState(null);
+      function login() {setUsername('admin');}
+      function logout() {setUsername(null);}
+      return (
+        <div>
+          {!username && <button onClick={login}>Log in</button>}
+          {username && 
+            <div>
+              Hello {username}
+              <button onClick={logout}>Log out</button>
+            </div>
+          }
+        </div>
+      );
+    }
+    ReactDOM.render(<App/>, document.getElementById('app'));
+</script>
