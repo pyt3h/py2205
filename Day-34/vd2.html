@@ -1,1 +1,45 @@
 <!--http://api.openweathermap.org/data/2.5/forecast?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9&cnt=8-->
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script type="text/babel">
+    const url = 'http://api.openweathermap.org/data/2.5/forecast?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9&cnt=8';
+    function App(){
+        const [dataList, setDataList] = React.useState([]);
+        async function init(){
+            const resp = await fetch(url);
+            const result = await resp.json();
+            console.log(result.list);
+            setDataList(result.list);
+        }
+        React.useEffect(init, []);
+        return(
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Temp</th>
+                  <th>Humidity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dataList.map(item => 
+                  <tr key={item.dt}>
+                    <td>{item.dt_txt}</td>
+                    <td>{item.main.temp} C</td>
+                    <td>{item.main.humidity} %</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+        );
+        /*return (
+            <ul>{dataList.map(item => 
+                <li key={item.dt}>{item.dt_txt} - {item.main.temp}</li>)
+            }</ul>
+        )*/
+    }
+    ReactDOM.render(<App/>, document.getElementById('app'));
+</script>
