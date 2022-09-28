@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script type="text/babel">
+  function App(){
+    const [customerList, setCustomerList] = React.useState([]);
+    async function searchCustomer(keyword=''){
+      const url = 'http://127.0.0.1:8000/api/search-customer?keyword='+keyword;
+      const resp = await fetch(url);
+      const result = await resp.json();
+      console.log(result);
+      setCustomerList(result);
+    }
+    React.useEffect(searchCustomer,[]);
+    const [keyword, setKeyword] = React.useState('');
+    return (
+      <div>
+        <input value={keyword} 
+          onChange={event=>setKeyword(event.target.value)}/> 
+
+        <button onClick={() => searchCustomer(keyword)}>
+          Tìm kiếm
+        </button>
+        <ul>
+          {customerList.map(c => 
+            <li key={c.id}>{c.name}-{c.phone}</li>
+          )}
+        </ul>
+      </div>
+    );
+  }
+  ReactDOM.render(<App/>, document.getElementById('app'));
+</script>
