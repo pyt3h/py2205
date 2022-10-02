@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script type="text/babel">
+  function SubSection({title, children}){
+    //const {title, children} = props; // unpack
+    return (
+      <div>
+        <h2>{title}</h2>
+        {children}
+      </div>
+    );
+  }
+  function Section(props){
+    return (
+      <div>
+        <h1>{props.title}</h1>
+        {props.children}
+      </div>
+    );
+  }
+  function App(){
+    return (
+      <div>
+        <Section title="I. Giới thiệu JSX">
+          <SubSection title="1.Biên dịch JSX với Babel">
+            <p>abcxyz 123 45657</p>
+          </SubSection>
+        </Section>
+        <Section title="II. Một số khái niệm cơ bản">
+          <SubSection title="1.Component">
+            <p>1234 56678 74324 6788</p>
+          </SubSection>
+        </Section>
+      </div>
+    );
+  }
+  ReactDOM.render(<App/>, document.getElementById('app'));
+</script>
