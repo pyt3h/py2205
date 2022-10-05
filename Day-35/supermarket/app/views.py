@@ -29,14 +29,21 @@ def search_customer(request):
 
 class ProductSerializer(ModelSerializer):
    class Meta:
-      ...
+      model = Product
+      fields = '__all__'
 
 @api_view(['GET'])# 127.0.0.1:8000/api/search-product?keyword=hao+hao
 def search_product(request):
-   params = ...
-   keyword = ...
-   product_list = ...
-   serializer = ...
+   params = request.GET
+   keyword = params.get('keyword','')
+   min_price = params.get('min_price')
+   max_price = params.get('max_price')
+   product_list = Product.objects.filter(name__icontains=keyword)
+   if min_price:
+      product_list = product_list.filter(price__gte=min_price)
+   if max_price:
+      product_list = product_list.filter(price__lte=max_price)
+   serializer = ProductSerializer(product_list,many=True)
    return Response(serializer.data)
 
 @api_view(['POST'])
