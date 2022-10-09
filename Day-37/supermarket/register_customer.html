@@ -1,0 +1,77 @@
+<meta charset="utf-8">
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<div id="app"></div>
+<script type="text/babel">
+    function App(){
+      const url = 'http://127.0.0.1:8000/api/create-customer';
+      const [name, setName] = React.useState('');
+      const [phone, setPhone] = React.useState('');
+      const [address, setAddress] = React.useState('');
+      const [errors, setErrors] = React.useState({});
+      async function register(){
+        let data = {name,phone,address};
+        data = JSON.stringify(data);
+        const headers = {'Content-Type': 'application/json'};
+        const resp = await fetch(url,{ method: 'POST',
+            body: data, headers: headers
+        });
+        if(resp.status != 200 && resp.status != 201) {
+          const result = await resp.json();
+          setErrors(result);
+          console.log(result);
+          alert('Lỗi xảy ra');
+        }else{
+          alert('Đăng ký thành công');
+        }
+      }
+      return (
+        <div className="container mt-3">
+          <h4>Thông tin khách hàng</h4>
+          <div className="row mt-3">
+            <div className="col-3">
+              Họ tên:
+            </div>
+            <div className="col-9">
+              <input className="form-control"
+                value={name} 
+                onChange={e=>setName(e.target.value)}
+              />
+              <div>{errors.name}</div>
+            </div>
+          </div>
+          <div className="row mt-3">
+            <div className="col-3">
+              SĐT:
+            </div>
+            <div className="col-9">
+              <input className="form-control"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+              />
+              <div>{errors.phone}</div>
+            </div>
+          </div>
+          <div className="row mt-3">
+            <div className="col-3">
+              Địa chỉ:
+            </div>
+            <div className="col-9">
+              <input className="form-control"
+                value={address}
+                onChange={e => setAddress(e.target.value)}
+              />
+              <div>{errors.address}</div>
+            </div>
+          </div>
+          <button onClick={register}
+            className="btn btn-primary"
+          >Đăng ký</button>
+        </div>
+      )
+    }
+    ReactDOM.render(<App/>, document.getElementById('app'));
+</script>
