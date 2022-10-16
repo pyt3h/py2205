@@ -1,149 +1,147 @@
+import {Link} from "react-router-dom";
 import Header from "components/Header";
+import axios from "axios";
+import { useEffect } from "react";
+import { useSliceSelector, useSliceStore } from "utils/reduxHelper";
+
+async function fetchProduct(searchParams) {
+  const {data} = await axios.get('/api/search-product',
+                    {params: searchParams});
+  console.log('data=', data);
+  return data;
+}
+
 function SearchBar() {
-  return(
-    <form action="#" class="">
-      <div class="input-group">
-        <input class="form-control" placeholder="Search" />
-        <button class="btn btn-primary">
-          <i class="fa fa-search"></i>
+  return (
+    <form action="#" className="">
+      <div className="input-group">
+        <input className="form-control" placeholder="Search" />
+        <button className="btn btn-primary">
+          <i className="fa fa-search"></i>
         </button>
       </div>
     </form>
+  );
+}
+
+function Sidebar() {
+  const {brandList} = useSliceSelector('app', ['brandList']);
+  return (
+    <div className="collapse card d-lg-block mb-5">
+      <div className="filter-group">
+        <div className="card-header">
+          <a href="#/" className="title">
+            Brands
+          </a>
+        </div>
+        <div className="collapse show">
+          <div className="card-body">
+            {brandList.map(brand=>
+              <label key={brand.id} className="form-check mb-2">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value=""
+                  checked
+                />
+                <span className="form-check-label"> {brand.name} </span>
+              </label>
+            )}
+            
+          </div>
+        </div>
+      </div>
+
+      <div className="filter-group">
+        <div className="card-header">
+          <a href="#/" className="title">
+            Price
+          </a>
+        </div>
+        <div className="collapse show">
+          <div className="card-body">
+            <div className="row mb-3">
+              <div className="col-6">
+                <label for="min" className="form-label">
+                  Min
+                </label>
+                <input className="form-control" type="number" min="0" />
+              </div>
+
+              <div className="col-6">
+                <label for="max" className="form-label">
+                  Max
+                </label>
+                <input className="form-control" type="number" min="0" />
+              </div>
+            </div>
+            <button className="btn btn-light w-100" type="button">
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+function ProductList() {
+  const {productList} = useSliceSelector('app', ['productList']);
+  return (
+    <div className="row">
+      {productList.map(product =>
+        <div key={product.id} className="col-lg-4 col-md-6 col-sm-6">
+          <ProductItem product={product}/>
+        </div>
+      )}
+    </div>
+  );
+}
+function ProductItem({product}) {
+  return (
+    <div className="card card-product-grid">
+      <div className="img-wrap">
+        <Link to={"/detail/" + product.id}>
+          <img alt="" src={axios.defaults.baseURL+product.image} />
+        </Link>
+      </div>
+      <div className="info-wrap border-top">
+        <div className="price-wrap">
+          <strong className="price">${product.price.toFixed(2)}</strong>
+        </div>
+        <p className="title mb-2 text-decoration-none">
+          {product.name}
+        </p>
+
+        <button className="btn btn-primary">Add to cart</button>
+      </div>
+    </div>
   )
 }
+
 function List() {
+  const store = useSliceStore('app');
+  async function init(){
+    const result = await axios.get('/api/get-brand-list');
+    const brandList = result.data;
+    console.log('brandList=', brandList);
+    const brandIds = brandList.map(b=>b.id).join(',');
+    const {items} = await fetchProduct({brand_ids: brandIds});
+    store.setState({brandList, productList: items});
+  }
+  useEffect(()=> init(), []);
   return (
     <>
       <Header>
-        <SearchBar/>
+        <SearchBar />
       </Header>
 
-      <div class="container mt-5 mb-5">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="collapse card d-lg-block mb-5">
-              <div class="filter-group">
-                <div class="card-header">
-                  <a href="#/" class="title">
-                    Brands
-                  </a>
-                </div>
-                <div class="collapse show">
-                  <div class="card-body">
-                    <label class="form-check mb-2">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        checked
-                      />
-                      <span class="form-check-label"> Mercedes </span>
-                    </label>
-
-                    <label class="form-check mb-2">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        checked
-                      />
-                      <span class="form-check-label"> Toyota </span>
-                    </label>
-
-                    <label class="form-check mb-2">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        checked
-                      />
-                      <span class="form-check-label"> Mitsubishi </span>
-                    </label>
-
-                    <label class="form-check mb-2">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        checked
-                      />
-                      <span class="form-check-label"> Nissan </span>
-                    </label>
-
-                    <label class="form-check mb-2">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                      />
-                      <span class="form-check-label"> Honda </span>
-                    </label>
-
-                    <label class="form-check mb-2">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                      />
-                      <span class="form-check-label"> Honda accord </span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="filter-group">
-                <div class="card-header">
-                  <a href="#/" class="title">
-                    Price
-                  </a>
-                </div>
-                <div class="collapse show">
-                  <div class="card-body">
-                    <div class="row mb-3">
-                      <div class="col-6">
-                        <label for="min" class="form-label">
-                          Min
-                        </label>
-                        <input class="form-control" type="number" min="0" />
-                      </div>
-
-                      <div class="col-6">
-                        <label for="max" class="form-label">
-                          Max
-                        </label>
-                        <input class="form-control" type="number" min="0" />
-                      </div>
-                    </div>
-                    <button class="btn btn-light w-100" type="button">
-                      Apply
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="container mt-5 mb-5">
+        <div className="row">
+          <div className="col-lg-3">
+            <Sidebar />
           </div>
-          <div class="col-lg-9">
-            <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-product-grid">
-                  <div class="img-wrap">
-                    <a href="detail.html">
-                      <img alt="" src="/images/items/10.jpg" />
-                    </a>
-                  </div>
-                  <div class="info-wrap border-top">
-                    <div class="price-wrap">
-                      <strong class="price">$99.00</strong>
-                    </div>
-                    <p class="title mb-2 text-decoration-none">
-                      T-shirts with multiple colors, for men and lady
-                    </p>
-
-                    <button class="btn btn-primary">Add to cart</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="col-lg-9">
+            <ProductList/>
           </div>
         </div>
       </div>

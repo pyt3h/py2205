@@ -1,4 +1,8 @@
+//src/redux/reducers/appReducers
 const initialState = {
+  brandList:[],
+  productList:[],
+  cartList:[],
   counter: 0
 }
 

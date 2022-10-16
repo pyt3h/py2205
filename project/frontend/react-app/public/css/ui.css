@@ -1300,10 +1300,10 @@ a.itemside:hover .img-thumbnail {
 }
 
 /* --------- description list --------*/
-dl[class=row] {
+dl[className=row] {
   margin-bottom: 0;
 }
-dl[class=row] dt {
+dl[className=row] dt {
   color: #212529;
 }
 

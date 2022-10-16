@@ -12,7 +12,7 @@ function App(){
     <Routes>
       <Route element={<List/>} path=""/>
       {/** 127.0.0.1:3000/detail */}
-      <Route element={<Detail/>} path="detail"/>
+      <Route element={<Detail/>} path="detail/:id"/>
       <Route element={<Cart/>} path="cart"/>
       <Route element={<Payment/>} path="payment"/>
       <Route element={<Success/>} path="success"/>

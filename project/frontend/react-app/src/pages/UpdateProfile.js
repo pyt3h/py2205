@@ -4,38 +4,38 @@ function UpdateProfile() {
     <>
       <Header/>
 
-      <div class="container mt-5 mb-5">
-        <div class="row">
-          <div class="col">
-            <div class="card mt-3">
-              <div class="content-body">
-                <h4 class="card-title">Update Profile</h4>
+      <div className="container mt-5 mb-5">
+        <div className="row">
+          <div className="col">
+            <div className="card mt-3">
+              <div className="content-body">
+                <h4 className="card-title">Update Profile</h4>
 
-                <div class="row">
-                  <div class="col-6 mb-3">
-                    <label for="" class="form-label">
+                <div className="row">
+                  <div className="col-6 mb-3">
+                    <label for="" className="form-label">
                       Name
                     </label>
-                    <input type="text" class="form-control" />
+                    <input type="text" className="form-control" />
                   </div>
 
-                  <div class="col-6 mb-3">
-                    <label for="" class="form-label">
+                  <div className="col-6 mb-3">
+                    <label for="" className="form-label">
                       Phone
                     </label>
-                    <input type="text" class="form-control" />
+                    <input type="text" className="form-control" />
                   </div>
                 </div>
 
-                <div class="mb-4">
-                  <label for="" class="form-label">
+                <div className="mb-4">
+                  <label for="" className="form-label">
                     Address
                   </label>
-                  <textarea class="form-control"></textarea>
+                  <textarea className="form-control"></textarea>
                 </div>
               </div>
             </div>
-            <a href="list.html" class="mt-3 btn btn-primary">
+            <a href="list.html" className="mt-3 btn btn-primary">
               {" "}
               Update{" "}
             </a>

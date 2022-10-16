@@ -1,3 +1,4 @@
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -7,6 +8,9 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+
+import axios from "axios";
+axios.defaults.baseURL = 'http://127.0.0.1:8000';
 
 ReactDOM.render(
   <React.StrictMode>

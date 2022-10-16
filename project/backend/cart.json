@@ -1,0 +1,16 @@
+{
+    "customer_name": "Nguyen Van A",
+    "customer_phone": "0123456789",
+    "customer_address": "Ha Noi",
+    "customer_id": 1,
+    "items": [
+        {
+            "qty": 1,
+            "product_id": 1
+        },
+        {
+            "qty": 2,
+            "product_id": 2
+        }
+    ]
+}

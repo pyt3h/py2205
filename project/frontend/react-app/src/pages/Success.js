@@ -4,13 +4,13 @@ function Success() {
     <>
       <Header/>
 
-      <div class="container mt-5 mb-5">
-        <div class="row">
-          <div class="col">
-            <h5 class="text-success">Your purchase has been success!</h5>
+      <div className="container mt-5 mb-5">
+        <div className="row">
+          <div className="col">
+            <h5 className="text-success">Your purchase has been success!</h5>
           </div>
         </div>
-        <a href="list.html" class="mt-3 btn btn-primary">
+        <a href="list.html" className="mt-3 btn btn-primary">
           {" "}
           Continue shopping{" "}
         </a>
